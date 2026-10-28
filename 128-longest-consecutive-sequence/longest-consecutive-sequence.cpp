@@ -1,30 +1,22 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        int longestarray=1,arr=1;
-        if(nums.size()==0)
+        unordered_set<int> st(nums.begin(),nums.end());
+        int longest=0;
+        for(int i:st){
+        if(st.count(i-1)==0)
         {
-            return 0;
-        }
+            int curnum=i;
+            int streak=1;
         
-        std::sort(nums.begin(),nums.end() );
-        for(int i=0;i<nums.size()-1;i++)
+        while(st.count(curnum+1)==1)
         {
-if(nums[i+1]==nums[i]){
-    continue;
-}
-if(nums[i+1]==nums[i]+1)
-{
-    arr++;
-}
-else
-{
-    longestarray=max(longestarray,arr);
-    arr=1;
-}
+            curnum++;
+            streak++;
         }
-        return max(longestarray,arr);
+        longest=max(longest,streak);
+     }
+        }
+    return longest;
     }
 };
