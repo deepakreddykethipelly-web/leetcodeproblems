@@ -7,7 +7,7 @@ public:
         while(right>left)
         {
             int sum=0;
-            sum+=numbers[right]+numbers[left];
+            sum=numbers[right]+numbers[left];
             if(sum>target)
             {
                 right--;
