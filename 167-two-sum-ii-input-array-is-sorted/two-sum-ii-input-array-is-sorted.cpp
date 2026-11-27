@@ -6,8 +6,8 @@ public:
         int right=n-1;
         while(right>left)
         {
-            int sum=0;
-            sum+=numbers[right]+numbers[left];
+            
+            int sum=numbers[right]+numbers[left];
             if(sum>target)
             {
                 right--;
