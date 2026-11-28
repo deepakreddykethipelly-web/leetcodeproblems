@@ -1,24 +1,28 @@
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        int left=0,right=height.size()-1;
-        int max1=0;
+        int n=height.size();
+        int maxarea=0;
+        int left=0;
+        int right=n-1;
         while(right>left)
-        {
-            int width=right-left;
-            int ch=min(height[left],height[right]);
-            max1=max(max1,width*ch);
-            if(height[left]<height[right])
+        {int curr=0;
+            if(height[left]>height[right])
             {
-                left++;
-            }
-            else
-            {
+                curr=height[right]*(right-left);
                 right--;
             }
+            else if(height[left]<height[right])
+            {
+                curr=height[left]*(right-left);
+                left++;
+            }
+            else{
+                curr=height[right]*(right-left);
+                right--;
+            }
+            maxarea=max(curr,maxarea);
         }
-return max1;
+        return maxarea;
     }
 };
